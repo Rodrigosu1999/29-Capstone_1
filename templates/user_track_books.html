@@ -13,7 +13,8 @@
         <div class="card-body">
           <h5 class="card-title">by {{book.author}}</h5>
           <p class="card-text">{{book.description}}</p>
-          {% for relation in book.users_books %} {% if relation.read_or_not %}
+          {% for relation in book.users_books %} {% if user.id ==
+          relation.user_id %} {% if relation.read_or_not %}
           <form method="POST" action="/users/books/{{book.isbn_10}}/read">
             <button class="btn btn-primary btn-sm">Read!</button>
           </form>
@@ -21,7 +22,7 @@
           <form method="POST" action="/users/books/{{book.isbn_10}}/read">
             <button class="btn btn-outline-primary btn-sm">Not read</button>
           </form>
-          {% endif %} {% endfor %}
+          {% endif %} {% endif %} {% endfor %}
         </div>
       </div>
     </div>
