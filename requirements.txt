@@ -43,5 +43,5 @@ toml==0.10.2
 traitlets==4.3.2
 urllib3==1.26.12
 wcwidth==0.1.7
-Werkzeug~=2.0.0
+werkzeug==0.16.1
 WTForms==2.2.1
