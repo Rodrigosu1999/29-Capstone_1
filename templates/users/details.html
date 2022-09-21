@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block body_class %}onboarding{% endblock %} {%
+block content %}
+
+<div class="row justify-content-md-center">
+  <div class="col-md-7 col-lg-5">
+    <div class="full-width text-center">
+      <img src="{{ user.image_url }}" alt="" class="w-50 rounded" />
+    </div>
+    <h2 class="join-message">{{user.username}}</h2>
+    <h3>Email</h3>
+    <p>{{user.email}}</p>
+    <h3>Books</h3>
+    <p>{{user.count_books()}}</p>
+    <form method="POST" id="user_form" action="/users/edit">
+      <button class="btn btn-primary btn-lg btn-block">Edit user</button>
+    </form>
+    <form method="POST" id="user_form" action="/users/delete">
+      <button class="btn btn-danger btn-lg btn-block">Delete user</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

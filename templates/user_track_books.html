@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block content %}
+<div class="col-sm-9">
+  <div class="row">
+    {% for book in user.books %}
+
+    <div class="col-lg-4 col-md-6 col-12">
+      <div class="card">
+        <h5 class="card-header">
+          <a href="/books/{{book.isbn_10}}" class="card-title">
+            {{ book.title }}
+          </a>
+        </h5>
+        <div class="card-body">
+          <h5 class="card-title">by {{book.author}}</h5>
+          <p class="card-text">{{book.description}}</p>
+          {% for relation in book.users_books %} {% if relation.read_or_not %}
+          <form method="POST" action="/users/books/{{book.isbn_10}}/read">
+            <button class="btn btn-primary btn-sm">Read!</button>
+          </form>
+          {% else %}
+          <form method="POST" action="/users/books/{{book.isbn_10}}/read">
+            <button class="btn btn-outline-primary btn-sm">Not read</button>
+          </form>
+          {% endif %} {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <h1>{{book.title}}</h1>
+  <h2>by {{book.author}}</h2>
+  <p>{{book.publisher}}</p>
+  <p>ISBN: {{book.isbn_10}}</p>
+  <p>{{book.description}}</p>
+</div>
+{% if g.user in book.users %}
+<form method="POST" action="/books/stop-tracking/{{ book.isbn_10 }}">
+  <button class="btn btn-primary btn-sm">Untrack</button>
+</form>
+{% else %}
+<form method="POST" action="/books/{{book.isbn_10}}/track">
+  <button class="btn btn-outline-primary btn-sm">Track</button>
+</form>
+{% endif %} {% endblock %}

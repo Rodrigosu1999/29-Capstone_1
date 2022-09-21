@@ -1,0 +1,33 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <h1 class="">NY Times Best Sellers</h1>
+</div>
+{% for list in lists %}
+<div class="container-fluid">
+  <h1 class="mt-5 list-name">{{list["list_name"]}}</h1>
+  <div class="scroll">
+    {% for book in list["books"] %}
+    <div class="col">
+      <div class="card">
+        <img
+          class="card-img-top"
+          src='{{book["book_image"]}}'
+          alt="Book-image"
+        />
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href='/books/{{book["primary_isbn10"]}}' class="link-dark"
+              >{{book["title"].title()}}</a
+            >
+          </h5>
+          <p class="card-text">
+            <small class="text-muted">by {{book["author"]}}</small>
+          </p>
+          <p class="card-text">{{book["rank"]}}.</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endfor %} {% endblock %}
