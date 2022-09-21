@@ -1,7 +1,7 @@
 import os
 
 import datetime
-from flask import Flask, render_template, flash, redirect, session, g
+from flask import Flask, render_template, flash, redirect, session, g, url_for
 from sqlalchemy.exc import IntegrityError
 
 from sqlalchemy import or_
@@ -211,7 +211,7 @@ def track_book(isbn):
 
             db.session.add(track_book)
             db.session.commit()
-            return redirect("users/books")
+            return redirect(url_for('user_books'))
 
         except IntegrityError:
             # We will get an Integrity Error if the user already tracks the book
