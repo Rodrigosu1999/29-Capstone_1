@@ -211,13 +211,12 @@ def track_book(isbn):
 
             db.session.add(track_book)
             db.session.commit()
+            return redirect("users/books")
 
         except IntegrityError:
-            # We will get an Integrity Error if the username already exist
+            # We will get an Integrity Error if the user already tracks the book
             flash("User is already tracking this book", 'danger')
             return redirect(f"/books/{isbn}")
-
-        return redirect("users/books")
 
     # If the book is not in our DB, we redirect to root route
     else:
