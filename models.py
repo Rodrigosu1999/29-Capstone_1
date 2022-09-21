@@ -163,12 +163,14 @@ class UserBook(db.Model):
 
     user_id = db.Column(
         db.Integer,
-        db.ForeignKey('users.id', ondelete="cascade")
+        db.ForeignKey('users.id', ondelete="cascade"),
+        unique=True
     )
 
     book_id = db.Column(
         db.Integer,
-        db.ForeignKey('books.id', ondelete="cascade")
+        db.ForeignKey('books.id', ondelete="cascade"),
+        unique=True
     )
 
     read_or_not = db.Column(
