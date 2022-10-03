@@ -7,6 +7,20 @@ This was done because most people (myself included) work better with visual trac
 ### Deployed app  
 https://nyt-best-sellers-tracker.herokuapp.com/  
 
+## Follow these instructions if you want to play with the code
+1. Intall "python-3.9.14" or greater version if you don't have it installed.
+2. Create a virtual environment in your machine if you don't want to install all dependencies globally. 
+3. Run the following command in your console.   
+  ``` 
+  pip3 install -r requirements.txt 
+  ```
+4. Create your database with postgresql so you can start adding data.
+5. Run the app through Flask  
+  ``` 
+  flask run
+  ```
+
+
 ## User Flow  
 - The user will start by loging in to the webpage if they have an account; if not, the user will sign up to create a new account.  
 - After logging in, the user will be shown the full overview of the current week's best sellers divided by categories. If the user wants to know extra information about a particular book, they can click on the book's title and the user will be redirected to the book's details page.  
@@ -25,10 +39,3 @@ The app was created with Python (working with Flask, SQLAlchemy, WTForms, Jinja)
 - Users interactivity to look at other's tracked books.
 - Accessability to look at previous weeks Best Sellers List
 
-## Follow these instructions if you want to play with the code
-1. Create a virtual environment. 
-2. Run the following command in your console.   
-  ``` 
-  pip3 install -r requirements.txt 
-  ```
-3. Create your database with postgresql so you can star adding data.
