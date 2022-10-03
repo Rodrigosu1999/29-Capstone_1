@@ -143,7 +143,7 @@ def homepage():
         return render_template('home-anon.html')
 
 
-@app.route('/books/<int:isbn>')
+@app.route('/books/<isbn>')
 def show_book(isbn):
     """Show book acording to the ISBN"""
     # If the user is not the one in session redirect
@@ -192,7 +192,7 @@ def show_book(isbn):
             return redirect("/")
 
 
-@app.route('/books/<int:isbn>/track', methods=["POST"])
+@app.route('/books/<isbn>/track', methods=["POST"])
 def track_book(isbn):
     """Make current user and book relation for tracking the book"""
     # If the user is not the one in session redirect
@@ -224,7 +224,7 @@ def track_book(isbn):
         return redirect("/")
 
 
-@app.route('/books/stop-tracking/<int:isbn>', methods=["POST"])
+@app.route('/books/stop-tracking/<isbn>', methods=["POST"])
 def stop_track_book(isbn):
     """Delete user and book relation for tracking the book"""
     # If the user is not the one in session redirect
@@ -272,7 +272,7 @@ def user_books():
         return render_template('user_track_books.html', user=g.user)
 
 
-@app.route('/users/books/<int:isbn>/read', methods=["POST"])
+@app.route('/users/books/<isbn>/read', methods=["POST"])
 def read_unread_book(isbn):
     """Let user select if they have read the book or not"""
     # If the user is not the one in session redirect
@@ -378,13 +378,6 @@ def profile():
         flash("Invalid credentials.", 'danger')
 
     return render_template('users/edit.html', form=form)
-
-##############################################################################
-# Turn off all caching in Flask
-#   (useful for dev; in production, this kind of stuff is typically
-#   handled elsewhere)
-#
-# https://stackoverflow.com/questions/34066804/disabling-caching-in-flask
 
 
 @cache.memoize(timeout=86400)

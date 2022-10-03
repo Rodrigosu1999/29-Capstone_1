@@ -123,8 +123,9 @@ class Book(db.Model):
         nullable=False
     )
 
+    # ISBN10 may contain the letter "X" at the end to represent a 10
     isbn_10 = db.Column(
-        db.Integer,
+        db.String,
         nullable=False,
         unique=True
     )
@@ -156,21 +157,16 @@ class UserBook(db.Model):
 
     __tablename__ = 'users_books'
 
-    id = db.Column(
-        db.Integer,
-        primary_key=True
-    )
-
     user_id = db.Column(
         db.Integer,
         db.ForeignKey('users.id', ondelete="cascade"),
-        unique=True
+        primary_key=True
     )
 
     book_id = db.Column(
         db.Integer,
         db.ForeignKey('books.id', ondelete="cascade"),
-        unique=True
+        primary_key=True
     )
 
     read_or_not = db.Column(
